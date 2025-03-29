@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista com LocalStorage</title>
+</head>
+
+<body>
+    <h2>Minha Lista</h2>
+    <input type="text" id="itemInput" placeholder="Digite um item">
+    <button onclick="adicionarItem()">Adicionar</button>
+    <ul id="lista"></ul>
+
+    <script>
+        // Recupera os itens salvos ao carregar a página
+        document.addEventListener("DOMContentLoaded", carregarLista);
+
+        function adicionarItem() {
+            const input = document.getElementById("itemInput");
+            const itemTexto = input.value.trim();
+
+            if (itemTexto === "") return;
+
+            // Criar elemento da lista
+            const li = document.createElement("li");
+            li.textContent = itemTexto;
+
+            // Adicionar botão de remoção
+            const botaoRemover = document.createElement("button");
+            botaoRemover.textContent = "❌";
+            botaoRemover.onclick = function () {
+                removerItem(itemTexto);
+            };
+
+            li.appendChild(botaoRemover);
+            document.getElementById("lista").appendChild(li);
+
+            // Salvar no localStorage
+            salvarNoLocalStorage(itemTexto);
+
+            // Limpar input
+            input.value = "";
+        }
+
+        function salvarNoLocalStorage(item) {
+            let lista = JSON.parse(localStorage.getItem("minhaLista")) || [];
+            lista.push(item);
+            localStorage.setItem("minhaLista", JSON.stringify(lista));
+        }
+
+        function carregarLista() {
+            let lista = JSON.parse(localStorage.getItem("minhaLista")) || [];
+            lista.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+
+                const botaoRemover = document.createElement("button");
+                botaoRemover.textContent = "❌";
+                botaoRemover.onclick = function () {
+                    removerItem(item);
+                };
+
+                li.appendChild(botaoRemover);
+                document.getElementById("lista").appendChild(li);
+            });
+        }
+
+        function removerItem(itemTexto) {
+            let lista = JSON.parse(localStorage.getItem("minhaLista")) || [];
+            lista = lista.filter(item => item !== itemTexto);
+            localStorage.setItem("minhaLista", JSON.stringify(lista));
+
+            // Atualizar a lista na tela
+            document.getElementById("lista").innerHTML = "";
+            carregarLista();
+        }
+    </script>
+</body>
+
+</html>
