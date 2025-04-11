@@ -11,11 +11,15 @@
 <body>
     <input id="nome" placeholder="Digite um nome">
     <button onclick="buscarIdade()">Buscar</button>
+
     <p id="idade">Idade: </p>
     <p id="genero">Gênero: </p>
     <p id="pais"> País: </p>
 
+    <button onclick="novaBusca()">Nova Busca</button>
+
     <script>
+        /* ajustar a consulta depois - erro por muitas requisições à api */
         function buscarIdade() {
             const nome = document.getElementById('nome').value;
             /* fetch(`https://api.agify.io?name=${nome}`)
@@ -37,6 +41,13 @@
                 console.log("Gênero:", genero.gender);
                 console.log("Nacionalidade:", nacionalidade.country[0].country_id); */
             });
+        }
+
+        function novaBusca() {
+            document.getElementById('idade').textContent = 'Idade: ';
+            document.getElementById('genero').textContent = 'Gênero: ';
+            document.getElementById('pais').textContent = 'País: ';
+            nome.value = '';
         }
     </script>
 
