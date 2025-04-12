@@ -28,3 +28,8 @@ document.getElementById('versiculoForm').addEventListener('submit', async functi
         console.error(err);
     }
 });
+
+const novaBusca = () => {
+    document.getElementById('resultado').style.display = 'none';
+    document.getElementById('erro').style.display = 'none';
+}
