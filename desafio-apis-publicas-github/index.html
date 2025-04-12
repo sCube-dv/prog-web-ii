@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Versículo da Bíblia</title>
+</head>
+
+<body>
+    <h1>Versículo de João 3:17</h1>
+    <pre id="versiculo"></pre>
+
+    <script>
+        const versiculoEl = document.getElementById('versiculo');
+
+        fetch('https://bible-api.com/mateus+3:17?translation=almeida')
+            .then(response => response.json())
+            .then(data => {
+                // Mostra o texto do versículo
+                versiculoEl.innerText = `${data.reference}: ${data.text}`;
+            })
+            .catch(error => {
+                versiculoEl.innerText = 'Erro ao buscar o versículo.';
+                console.error('Erro:', error);
+            });
+    </script>
+</body>
+
+</html>
