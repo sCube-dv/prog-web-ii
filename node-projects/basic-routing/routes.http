@@ -1,0 +1,39 @@
+GET http://localhost:3000/
+
+###
+# retourns a list of students
+GET http://localhost:3000/api/students
+
+
+###
+# returns a student with id 3
+GET http://localhost:3000/api/students/5
+
+
+
+###
+# creates a new student
+POST http://localhost:3000/api/students
+Content-Type: application/json
+
+{
+  "name": "Samuel Santos",
+  "age": 32,
+  "enrolled": true
+}
+
+###
+# updates a student with id 3
+PUT http://localhost:3000/api/students/6
+Content-Type: application/json
+
+{
+  "name": "Samuel Silva",
+  "age": 32,
+  "enrolled": true
+}
+
+###
+# deletes a student with id 3
+DELETE http://localhost:3000/api/students/6
+
