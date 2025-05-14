@@ -57,7 +57,7 @@ app.post('/api/students', (req, res) => {
 });
 
 // UPDATE
-/* route to update a student */ 
+/* route to update a student */
 app.put('/api/students/:id', (req, res) => {
     /* locale a student in list of students by id */
     const student = students.find(s => s.id === parseInt(req.params.id));
