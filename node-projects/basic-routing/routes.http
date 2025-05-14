@@ -7,7 +7,7 @@ GET http://localhost:3000/api/students
 
 ###
 # returns a student with id 3
-GET http://localhost:3000/api/students/5
+GET http://localhost:3000/api/students/3
 
 
 
@@ -29,11 +29,11 @@ Content-Type: application/json
 
 {
   "name": "Samuel Silva",
-  "age": 32,
-  "enrolled": true
+  "age": 35,
+  "enrolled": false
 }
 
 ###
-# deletes a student with id 3
+# deletes a student with id 6
 DELETE http://localhost:3000/api/students/6
 

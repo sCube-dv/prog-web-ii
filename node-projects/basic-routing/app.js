@@ -67,9 +67,9 @@ app.put('/api/students/:id', (req, res) => {
     if (!student) return res.status(404).send('Student not found!');
 
     /* update the student */
-    student.name = req.body.name;
-    student.age = req.body.age;
-    student.enrolled = req.body.enrolled;
+    student.name = req.body.name || student.name;
+    student.age = req.body.age !== undefined ? parseInt(req.body.age) : student.age;
+    student.enrolled = req.body.enrolled !== undefined ? req.body.enrolled === 'true' : student.enrolled;
 
     /* return the updated student */
     res.send(student);
