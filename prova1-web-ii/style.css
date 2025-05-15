@@ -1,0 +1,8 @@
+.valid {
+    border-color: green !important;
+    /*'!important' modificador que dá prioridade máxima à regra*/
+}
+
+.invalid {
+    border-color: red !important;
+}
