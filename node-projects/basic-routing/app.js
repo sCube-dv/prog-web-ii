@@ -21,7 +21,7 @@ const students = [
 /* CRUD */
 
 app.get('/', (req, res) => {
-    res.send('NodeJS API Working');
+    res.send('NodeJS API Working!');
 });
 // READ
 /* route to return all students */
