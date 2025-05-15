@@ -10,7 +10,7 @@ document.getElementById('formCliente').addEventListener('submit', function (e) {
         } else {
             adicionarCliente(cliente);
         }
-        salvarNoStorage();
+
         limparFormulario();
         mostrarClientes();
     }
@@ -104,16 +104,14 @@ function limparFormulario() {
     editandoIndex = null;
 }
 
+
 function fecharFormulario() {
     limparFormulario();
 }
 
+/* retorna a lista de clientes armazenada no localStorage */
 function obterListaClientes() {
     return JSON.parse(localStorage.getItem('clientes')) || [];
-}
-
-function salvarNoStorage() {
-    // Já feito nas funções de adicionar/atualizar
 }
 
 // Inicializa a lista ao carregar
